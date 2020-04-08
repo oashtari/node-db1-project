@@ -9,10 +9,13 @@ SELECT Phone FROM Suppliers
 WHERE SupplierID = 11
 
 -- List first 10 orders placed, sorted descending by the order date
-SELECT OrderID, OrderDate 
-FROM orders
-ORDER BY OrderDate DESC
-LIMIT 10 ;
+SELECT TOP 10 OrderID, OrderDate 
+FROM Orders 
+ORDER BY OrderID ASC, OrderDate DESC;
+
+-- you pick which one you like :)
+
+SELECT OrderID, OrderDate FROM Orders WHERE (SELECT OrderDate FROM Orders ORDER BY OrderDate DESC) Limit 10
 
 -- Find all customers that live in London, Madrid, or Brazil
 SELECT * FROM Customers
